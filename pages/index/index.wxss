@@ -1,10 +1,291 @@
 /**index.wxss**/
 page {
   height: 100vh;
+  overflow: hidden;
+  background: #faf8ef;
+}
+
+.container {
+  padding: 0 32rpx;
+  background: #faf8ef;
+  height: 100vh;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+  padding-top: calc(88rpx + env(safe-area-inset-top));
+}
+
+.game-container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 32rpx;
+}
+
+.score-container, .best-container {
+  background: #bbada0;
+  padding: 20rpx 32rpx;
+  border-radius: 16rpx;
+  color: #f9f6f2;
+  text-align: center;
+  box-shadow: 0 8rpx 16rpx rgba(139, 119, 101, 0.1);
+  min-width: 160rpx;
+}
+
+.score, .best {
+  display: block;
+  font-size: 40rpx;
+  font-weight: 600;
+  margin-top: 8rpx;
+  color: #f9f6f2;
+}
+
+.game-board {
+  background: #bbada0;
+  padding: 24rpx;
+  border-radius: 24rpx;
+  position: relative;
+  box-shadow: 0 12rpx 24rpx rgba(139, 119, 101, 0.15);
+}
+
+.grid-row {
+  display: flex;
+  margin-bottom: 12rpx;
+}
+
+.grid-row:last-child {
+  margin-bottom: 0;
+}
+
+.grid-cell {
+  background: rgba(238, 228, 218, 0.35);
+  width: 150rpx;
+  height: 150rpx;
+  margin-right: 12rpx;
+  border-radius: 16rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 44rpx;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow: inset 0 2rpx 4rpx rgba(139, 119, 101, 0.1);
+  transition: all 0.15s ease;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.grid-cell:last-child {
+  margin-right: 0;
+}
+
+/* iOS style colors */
+.cell-2 { 
+  background: rgba(238, 228, 218, 0.8);
+  color: #776e65;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.cell-4 { 
+  background: rgba(237, 224, 200, 0.8);
+  color: #776e65;
+  backdrop-filter: blur(10px);
+}
+.cell-8 { 
+  background: rgba(242, 177, 121, 0.8);
+  color: #f9f6f2;
+  backdrop-filter: blur(10px);
+}
+.cell-16 { 
+  background: rgba(245, 149, 99, 0.8);
+  color: #f9f6f2;
+  backdrop-filter: blur(10px);
+}
+.cell-32 { 
+  background: rgba(246, 124, 95, 0.8);
+  color: #f9f6f2;
+  backdrop-filter: blur(10px);
+}
+.cell-64 { 
+  background: rgba(246, 94, 59, 0.8);
+  color: #f9f6f2;
+  backdrop-filter: blur(10px);
+}
+.cell-128 { 
+  background: rgba(237, 207, 114, 0.8); 
+  color: #f9f6f2; 
+  font-size: 40rpx;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4rpx 8rpx rgba(243, 215, 116, 0.3);
+}
+.cell-256 { 
+  background: rgba(237, 204, 97, 0.8); 
+  color: #f9f6f2; 
+  font-size: 40rpx;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4rpx 8rpx rgba(243, 215, 116, 0.3);
+}
+.cell-512 { 
+  background: rgba(237, 200, 80, 0.8); 
+  color: #f9f6f2; 
+  font-size: 40rpx;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4rpx 8rpx rgba(243, 215, 116, 0.3);
+}
+.cell-1024 { 
+  background: rgba(237, 197, 63, 0.8); 
+  color: #f9f6f2; 
+  font-size: 36rpx;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4rpx 8rpx rgba(243, 215, 116, 0.3);
+}
+.cell-2048 { 
+  background: rgba(237, 194, 46, 0.8); 
+  color: #f9f6f2; 
+  font-size: 36rpx;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4rpx 8rpx rgba(243, 215, 116, 0.3);
+}
+
+.game-message {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(238, 228, 218, 0.9);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 24rpx;
+  backdrop-filter: blur(10px);
+}
+
+.game-message.game-over {
+  display: flex;
+}
+
+.game-message text {
+  font-size: 48rpx;
+  font-weight: 600;
+  color: #776e65;
+  margin-bottom: 24rpx;
+}
+
+.game-message button {
+  margin-top: 24rpx;
+  background: #8f7a66;
+  color: #f9f6f2;
+  border: none;
+  padding: 16rpx 40rpx;
+  border-radius: 12rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  box-shadow: 0 4rpx 8rpx rgba(143, 122, 102, 0.3);
+}
+
+.game-message button:active {
+  background: #7c6957;
+  transform: scale(0.98);
+}
+
+.game-intro {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  margin-bottom: 24rpx;
 }
-.scrollarea {
-  flex: 1;
-  overflow-y: hidden;
+
+.intro-text {
+  color: #776e65;
+  font-size: 32rpx;
+  font-weight: 500;
+  margin-bottom: 20rpx;
+  text-align: center;
+}
+
+.restart-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.restart-btn {
+  background: linear-gradient(145deg, #8f7a66, #776e65);
+  color: #f9f6f2;
+  border: none !important;
+  padding: 16rpx 48rpx;
+  border-radius: 40rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4rpx 12rpx rgba(143, 122, 102, 0.3);
+  transition: all 0.3s ease;
+  width: auto;
+  min-width: 180rpx;
+  line-height: 2;
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+  position: relative;
+  z-index: 1;
+}
+
+.restart-btn::after {
+  border: none;
+}
+
+.restart-btn-hover {
+  transform: translateY(2rpx);
+  box-shadow: 0 2rpx 6rpx rgba(143, 122, 102, 0.3),
+              inset 1px 1px 1px rgba(255, 255, 255, 0.1);
+  opacity: 0.9;
+}
+
+.restart-icon {
+  display: none;
+}
+
+/* 游戏结束时的重新开始按钮样式保持一致 */
+.game-message button {
+  background: linear-gradient(145deg, #8f7a66, #776e65);
+  color: #f9f6f2;
+  border: none !important;
+  padding: 16rpx 48rpx;
+  border-radius: 40rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4rpx 12rpx rgba(143, 122, 102, 0.3);
+  width: auto;
+  min-width: 180rpx;
+  margin: 0 auto;
+  line-height: 2;
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+}
+
+.game-message button::after {
+  border: none;
+}
+
+/* 移除不需要的样式 */
+.help-btn,
+.help-modal,
+.help-content,
+.help-title,
+.help-text,
+.close-btn {
+  display: none;
 }

@@ -1,7 +1,66 @@
-<!--index.wxml-->
-<navigation-bar title="Weixin" back="{{false}}" color="black" background="#FFF"></navigation-bar>
-<scroll-view class="scrollarea" scroll-y type="list">
-  <view class="container">
-    bobo 测试页面
+<navigation-bar 
+  title="2048" 
+  back="{{false}}" 
+  color="#776e65"
+  background="#faf8ef"
+  fixed="{{true}}"
+></navigation-bar>
+<view class="container">
+  <view class="game-container">
+    <view class="header">
+      <view class="score-container">
+        <text>得分</text>
+        <text class="score">{{score}}</text>
+      </view>
+      <view class="best-container">
+        <text>最高分</text>
+        <text class="best">{{bestScore}}</text>
+      </view>
+    </view>
+    
+    <!-- 简化的重新开始按钮 -->
+    <view class="game-intro">
+      <text class="intro-text">合并相同的数字，得到2048！</text>
+      <view class="restart-container">
+        <button class="restart-btn" hover-class="restart-btn-hover" bindtap="restartGame">
+          重新开始
+        </button>
+      </view>
+    </view>
+
+    <view class="game-board" 
+          bindtouchstart="onTouchStart" 
+          bindtouchend="onTouchEnd"
+          bindtouchmove="onTouchMove">
+      <view class="grid-container">
+        <view class="grid-row" wx:for="{{board}}" wx:for-item="row" wx:for-index="i" wx:key="i">
+          <view class="grid-cell cell-{{item}}" wx:for="{{row}}" wx:key="j">
+            {{item !== 0 ? item : ''}}
+          </view>
+        </view>
+      </view>
+      <view class="game-message {{gameOver ? 'game-over' : ''}}">
+        <text>游戏结束!</text>
+        <button class="restart-btn" hover-class="restart-btn-hover" bindtap="restartGame">
+          重新开始
+        </button>
+      </view>
+    </view>
   </view>
-</scroll-view>
+</view>
+
+<!-- 添加游戏说明弹窗 -->
+<view class="help-modal {{showHelpModal ? 'show' : ''}}">
+  <view class="help-content">
+    <view class="help-title">游戏说明</view>
+    <view class="help-text">
+      <text>1. 上下左右滑动移动方块</text>
+      <text>2. 相同数字的方块相撞时会合并</text>
+      <text>3. 每次移动后会出现一个新的2或4</text>
+      <text>4. 当无法移动时游戏结束</text>
+      <text>5. 得分为当前最大数字</text>
+      <text>6. 尝试获得2048吧！</text>
+    </view>
+    <button class="close-btn" bindtap="closeHelp">知道了</button>
+  </view>
+</view>
