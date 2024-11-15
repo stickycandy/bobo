@@ -1,0 +1,48 @@
+.container {
+  padding: 32rpx;
+  padding-top: 150rpx;
+  background: #f6f6f6;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.profile-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24rpx;
+  padding: 48rpx 32rpx;
+  background: #fff;
+  border-radius: 16rpx;
+}
+
+.avatar {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+  background: #f0f0f0;
+}
+
+.nickname {
+  font-size: 36rpx;
+  font-weight: 500;
+  color: #333;
+}
+
+.login-btn {
+  margin-top: 16rpx;
+  width: 240rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  background: #1296db;
+  color: #fff;
+  border-radius: 40rpx;
+  font-size: 32rpx;
+  font-weight: normal;
+  padding: 0;
+}
+
+.login-btn::after {
+  border: none;
+} 

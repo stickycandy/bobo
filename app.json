@@ -1,10 +1,31 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/2048/index",
+    "pages/profile/index"
   ],
   "window": {
     "navigationBarTextStyle": "black",
-    "navigationStyle": "custom"
+    "navigationStyle": "custom",
+    "backgroundColor": "#f6f6f6"
+  },
+  "tabBar": {
+    "color": "#8a8a8a",
+    "selectedColor": "#1296db",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "height": "40rpx",
+    "fontSize": "18rpx",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/profile/index",
+        "text": "我的"
+      }
+    ]
   },
   "style": "v2",
   "renderer": "skyline",

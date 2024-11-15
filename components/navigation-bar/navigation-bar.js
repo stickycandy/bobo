@@ -39,5 +39,14 @@ Component({
         navBarHeight: (menuButtonInfo.top - systemInfo.statusBarHeight) * 2 + menuButtonInfo.height
       })
     }
+  },
+  methods: {
+    navigateBack() {
+      if (this.properties.back) {
+        wx.navigateBack({
+          delta: 1
+        })
+      }
+    }
   }
 })

@@ -20,7 +20,17 @@
       "outputPath": ""
     }
   },
-  "condition": {},
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "2048游戏",
+          "pathName": "pages/2048/index",
+          "query": ""
+        }
+      ]
+    }
+  },
   "editorSetting": {
     "tabIndent": "insertSpaces",
     "tabSize": 2
