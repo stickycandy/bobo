@@ -1,32 +1,52 @@
 Page({
   data: {
-    userInfo: null,
-    hasUserInfo: false,
-    canIUseGetUserProfile: wx.canIUse('getUserProfile')
+    isLoggedIn: false,
+    userInfo: {}
   },
 
   onLoad() {
-    // 检查是否已有用户信息缓存
-    const userInfo = wx.getStorageSync('userInfo')
+    this.checkLoginStatus();
+  },
+
+  checkLoginStatus() {
+    // 检查本地存储的登录状态
+    const userInfo = wx.getStorageSync('userInfo');
     if (userInfo) {
       this.setData({
-        userInfo: userInfo,
-        hasUserInfo: true
-      })
+        isLoggedIn: true,
+        userInfo: userInfo
+      });
     }
   },
 
-  getUserProfile() {
+  handleLogin() {
     wx.getUserProfile({
       desc: '用于完善用户资料',
       success: (res) => {
-        // 保存用户信息到本地缓存
-        wx.setStorageSync('userInfo', res.userInfo)
+        const userInfo = res.userInfo;
+        // 添加用户ID，实际应用中可能需要从后端获取
+        userInfo.userId = this.generateUserId();
+        
+        // 保存用户信息到本地存储
+        wx.setStorageSync('userInfo', userInfo);
+        
         this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
+          isLoggedIn: true,
+          userInfo: userInfo
+        });
+      },
+      fail: (err) => {
+        console.error('登录失败', err);
+        wx.showToast({
+          title: '登录失败',
+          icon: 'none'
+        });
       }
-    })
+    });
+  },
+
+  generateUserId() {
+    // 这里只是示例，实际应用中应该由后端生成用户ID
+    return 'USER_' + Math.random().toString(36).substr(2, 9);
   }
-}) 
+}); 

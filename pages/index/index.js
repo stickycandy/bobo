@@ -10,6 +10,10 @@ Page({
         id: '2048',
         name: '2048',
         description: '经典数字益智游戏'
+      }, {
+        id: 'fly',
+        name: '飞机大战',
+        description: '经典数字益智游戏'
       }
     ]
   },
@@ -74,6 +78,12 @@ Page({
     const gameId = e.currentTarget.dataset.id
     wx.navigateTo({
       url: `/pages/${gameId}/index`
+    })
+  },
+
+  navigateToFly() {
+    wx.navigateTo({
+      url: '/pages/fly/index'
     })
   }
 })

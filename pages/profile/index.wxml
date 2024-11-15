@@ -1,17 +1,21 @@
 <navigation-bar title="我的" back="{{false}}" fixed="{{true}}" />
 
-<view class="container">
-  <view class="profile-header">
-    <!-- 未登录状态 -->
-    <block wx:if="{{!hasUserInfo}}">
-      <image class="avatar" src="/assets/images/default-avatar.png" mode="aspectFill" />
-      <button class="login-btn" bindtap="getUserProfile">点击登录</button>
-    </block>
-    
-    <!-- 已登录状态 -->
-    <block wx:else>
-      <image class="avatar" src="{{userInfo.avatarUrl}}" mode="aspectFill" />
-      <text class="nickname">{{userInfo.nickName}}</text>
-    </block>
+<view class="profile-container">
+  <!-- 顶部用户信息区域 -->
+  <view class="user-info-section">
+    <view class="user-card">
+      <view class="avatar-container">
+        <image class="avatar" src="{{userInfo.avatarUrl || '/assets/default-avatar.png'}}" />
+      </view>
+      <view class="user-details">
+        <block wx:if="{{isLoggedIn}}">
+          <text class="nickname">{{userInfo.nickName}}</text>
+          <text class="user-id">ID: {{userInfo.userId || '---'}}</text>
+        </block>
+        <block wx:else>
+          <button class="login-btn" bindtap="handleLogin">点击登录</button>
+        </block>
+      </view>
+    </view>
   </view>
 </view> 

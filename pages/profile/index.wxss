@@ -1,48 +1,56 @@
-.container {
-  padding: 32rpx;
-  padding-top: 150rpx;
-  background: #f6f6f6;
+.profile-container {
   min-height: 100vh;
-  box-sizing: border-box;
+  background: linear-gradient(180deg, #7cb8f7 0%, #2cc1ff 100%);
+  padding-top: 120rpx;
 }
 
-.profile-header {
+.user-info-section {
+  margin: 0 30rpx;
+  padding: 20rpx 30rpx;
+}
+
+.user-card {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 24rpx;
-  padding: 48rpx 32rpx;
-  background: #fff;
-  border-radius: 16rpx;
+  padding: 20rpx 0;
+}
+
+.avatar-container {
+  margin-right: 30rpx;
 }
 
 .avatar {
-  width: 160rpx;
-  height: 160rpx;
-  border-radius: 50%;
-  background: #f0f0f0;
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 60rpx;
+  border: 4rpx solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);
+}
+
+.user-details {
+  flex: 1;
 }
 
 .nickname {
-  font-size: 36rpx;
+  font-size: 32rpx;
   font-weight: 500;
-  color: #333;
+  color: #ffffff;
+  margin-bottom: 10rpx;
+  display: block;
+}
+
+.user-id {
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.8);
 }
 
 .login-btn {
-  margin-top: 16rpx;
-  width: 240rpx;
-  height: 80rpx;
-  line-height: 80rpx;
-  text-align: center;
-  background: #1296db;
+  background: rgba(255, 255, 255, 0.2);
   color: #fff;
-  border-radius: 40rpx;
-  font-size: 32rpx;
-  font-weight: normal;
-  padding: 0;
-}
-
-.login-btn::after {
-  border: none;
+  font-size: 30rpx;
+  padding: 15rpx 40rpx;
+  border-radius: 30rpx;
+  border: 1rpx solid rgba(255, 255, 255, 0.3);
+  display: inline-block;
+  backdrop-filter: blur(5px);
 } 

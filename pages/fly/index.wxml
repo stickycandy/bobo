@@ -1,0 +1,11 @@
+<view class="container">
+  <canvas type="2d" id="gameCanvas" class="game-canvas"></canvas>
+  <view class="control-area" bindtouchstart="handleTouchStart" bindtouchmove="handleTouchMove" bindtouchend="handleTouchEnd"></view>
+  <view class="game-info">
+    <text>得分：{{score}}</text>
+  </view>
+  <view class="game-over" wx:if="{{gameOver}}">
+    <text>游戏结束</text>
+    <text>得分：{{score}}</text>
+  </view>
+</view> 

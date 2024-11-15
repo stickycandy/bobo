@@ -3,7 +3,7 @@
   "projectname": "bobo",
   "setting": {
     "compileHotReLoad": true,
-    "skylineRenderEnable": true
+    "skylineRenderEnable": false
   },
   "libVersion": "3.6.3"
 }
